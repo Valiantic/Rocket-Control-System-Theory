@@ -25,15 +25,18 @@ CL = ctrl.feedback(C * G, 1)
 plt.figure(figsize=(10, 6))
 ctrl.root_locus(C * G, grid=True)
 plt.title("Root Locus Plot (Closed-Loop)")
+plt.show()
 
 # bode plot for stability analysis
 
 plt.figure(figsize=(10, 6))
 ctrl.bode_plot(CL, dB=True, Hz=False, deg=True)
 plt.suptitle("Bode Plot (Closed-Loop)", fontsize=16)
+plt.show()
 
 # nyquist Plot for Stability Analysis
 
 plt.figure(figsize=(10, 6))
 ctrl.nyquist_plot(CL)
 plt.title("Nyquist Plot (Closed-Loop)")
+plt.show()
