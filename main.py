@@ -20,21 +20,29 @@ C = ctrl.TransferFunction([Kd, Kp, Ki], [1,0])
 # Applying pid controller to rocket transfer function
 CL = ctrl.feedback(C * G, 1)
 
-# root locus for gain analysis 
+# Root locus for gain analysis 
+# note: If they are on the left side of the graph, the system is stable. 
+# If they are on the right side, the system is unstable.
 
 plt.figure(figsize=(10, 6))
 ctrl.root_locus(C * G, grid=True)
 plt.title("Root Locus Plot (Closed-Loop)")
 plt.show()
 
-# bode plot for stability analysis
+# Bode plot for stability analysis
+# note: The magnitude plot measures the gain of a system across different frequencies. 
+# Higher gain means quicker and stronger reactions, which is good for precise control.
+# The phase plot measures the phase shift introduced by the system across different frequencies. 
+# The phase shift is seen when the gain is 0.
 
 plt.figure(figsize=(10, 6))
 ctrl.bode_plot(CL, dB=True, Hz=False, deg=True)
 plt.suptitle("Bode Plot (Closed-Loop)", fontsize=16)
 plt.show()
 
-# nyquist Plot for Stability Analysis
+# Nyquist Plot for Stability Analysis
+# note: If there is no circle around the red cross at point (-1 0), the system is stable.
+# If there are circles around the red cross, namely clockwise circles, at point (-1 0), the system is unstable.
 
 plt.figure(figsize=(10, 6))
 ctrl.nyquist_plot(CL)
