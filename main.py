@@ -20,4 +20,8 @@ C = ctrl.TransferFunction([Kd, Kp, Ki], [1,0])
 # Applying pid controller to rocket transfer function
 CL = ctrl.feedback(C * G, 1)
 
+# root locus for gain analysis 
 
+plt.figure(figsize=(10, 6))
+ctrl.root_locus(C * G, grid=True)
+plt.title("Root Locus Plot (Closed-Loop)")
